@@ -1,5 +1,5 @@
 let game;
-class player{
+class Player{
     constructor(token){
         this.token = token;
     }
