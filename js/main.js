@@ -77,7 +77,6 @@ class TicTacToe {
           document.dispatchEvent(drawEvent);
       }
   }
-
   recordMove(event){
       // This method handles recording a move in the `this.gameState` property.
       let tile_x = event.target.dataset.x;
@@ -116,11 +115,11 @@ class TicTacToe {
   }
   setUpBoard(){
       this.gameboard.innerHTML = '';
-      for(let i =0; i < 3; i++){
+      for(let i = 0; i < 3; i++){
           let newRow = document.createElement('div');
           newRow.setAttribute('class','row');
-          for (let j = 0; j > 3; j++){
-          let newCol = document.createElement('div');
+          for(let j = 0; j < 3; j++){
+              let newCol = document.createElement('div');
               newCol.setAttribute('class', 'col-xs-3');
               let newTile = document.createElement('span');
               newTile.setAttribute('class', 'fas fa-question tile');
@@ -130,8 +129,7 @@ class TicTacToe {
               newRow.appendChild(newCol);
           }
           this.gameboard.appendChild(newRow);
-      }
-        
+      }  
     this.setUpTileListeners();
     }
   initializeMovePrompt(){
@@ -151,7 +149,8 @@ class TicTacToe {
       console.log('init move prompt');
 
   }
-} // End of the Tic Tac Toe Class definition.
+} 
+// End of the Tic Tac Toe Class definition.
 document.addEventListener('DOMContentLoaded', (event) =>{
   let startButton = document.querySelector('#start-button');
   startButton.addEventListener('click', (event) => {
