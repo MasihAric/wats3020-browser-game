@@ -1,6 +1,6 @@
 let game;
 class Player{
-    constructor(token){
+    constructor(token) {
         this.token = token;
     }
 }
@@ -147,7 +147,6 @@ class TicTacToe {
       console.log('set up board');
       this.initializeMovePrompt();
       console.log('init move prompt');
-
   }
 } 
 // End of the Tic Tac Toe Class definition.
@@ -162,7 +161,6 @@ document.addEventListener('win', (event) =>{
   console.log('win event fired');
   game.showWinScreen();
 })
-
 document.addEventListener('draw', (event) => {
     console.log('draw event fired');
   game.showDrawScreen();
@@ -170,10 +168,8 @@ document.addEventListener('draw', (event) => {
 function handleMove(event){
   // Record the move for the current player.
   game.recordMove(event);
-
   // Check to see if the last move was a winning move.
   game.checkForWinner();
-
   // Rotate players.
   game.switchPlayer();
 }
