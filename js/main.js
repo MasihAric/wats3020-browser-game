@@ -20,22 +20,12 @@ class TicTacToe {
       this.winScreen = document.querySelector('#win-screen');
       this.winnerToken = document.querySelector('#winner-token');
       this.drawScreen = document.querySelector('#draw-screen');
-      // Initialize an Array representing the starting state of the game board.
-      // This is provided for you. We can access the spaces on the board using
-      // (X, Y) coordinates as `this.gameState[x][y]`, which is how the game
-      // will check to see if the winner is known.
       this.gameState = [
           [null, null, null],
           [null, null, null],
           [null, null, null]
       ];
-
       // Array of Win States
-      // This is provided for you. Each of these arrays represents the ways
-      // a player can win Tic Tac Toe. Each item in the array is another
-      // array. Each of those arrays contains a set of (X, Y) coordinates.
-      // If a player has claimed the tile at each of the coordinates listed in
-      // one of the win states, then they have won the game.
       this.winStates = [
         [[0,0],[0,1],[0,2]],
         [[1,0],[1,1],[1,2]],
@@ -47,9 +37,6 @@ class TicTacToe {
         [[0,2],[1,1],[2,0]]
       ];
   }
-
-  // This `checkForWinner()` method is provided for you, but you must fill in
-  // the event dispatch lines that cause the end game screens to show.
   checkForWinner(){
       for (let condition of this.winStates){
           let winningCondition = true;
@@ -90,10 +77,10 @@ class TicTacToe {
   }
   switchPlayer(){
       // This method handles switching between players after each move.
-      if(this.currentPlayer == this.player1){
+      if(this.currentPlayer === this.player1){
           this.currentPlayer = this.player2;
       }else{
-          this.currentPlayer = this.player;
+          this.currentPlayer = this.player1;
       }
       this.currentPlayerToken.setAttribute('class', `fas fa-${this.currentPlayer.token}`);
   }
@@ -115,9 +102,9 @@ class TicTacToe {
   }
   setUpBoard(){
       this.gameboard.innerHTML = '';
-      for(let i = 0; i < 3; i++){
+      for (let i = 0; i < 3; i++){
           let newRow = document.createElement('div');
-          newRow.setAttribute('class','row');
+          newRow.setAttribute('class', 'row');
           for(let j = 0; j < 3; j++){
               let newCol = document.createElement('div');
               newCol.setAttribute('class', 'col-xs-3');
@@ -163,13 +150,13 @@ document.addEventListener('win', (event) =>{
 })
 document.addEventListener('draw', (event) => {
     console.log('draw event fired');
-  game.showDrawScreen();
+    game.showDrawScreen();
 })
 function handleMove(event){
   // Record the move for the current player.
-  game.recordMove(event);
+    game.recordMove(event);
   // Check to see if the last move was a winning move.
-  game.checkForWinner();
+    game.checkForWinner();
   // Rotate players.
-  game.switchPlayer();
+    game.switchPlayer();
 }
